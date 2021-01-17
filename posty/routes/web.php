@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +29,10 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post("/logout", [LogoutController::class, "index"])->name("logout");
 
 Route::get("/dashboard",[DashboardController::class, "index"])->name("dashboard");
+
+Route::get("/posts", [PostsController::class, "index"])->name("posts");
+
+Route::post("/posts", [PostsController::class, "store"]);
 
 Route::get('/', function () {
     return view("home");
