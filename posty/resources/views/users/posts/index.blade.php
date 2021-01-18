@@ -1,35 +1,12 @@
 @extends("layouts.app")
 
 @section("content")
-<div class="flex justify-center">
-    <div class="w-8/12 bg-white p-6 rounded-lg">
-        @auth
-            <form action="{{ route('posts') }}" method="post" class="mb-4">
-                @csrf
-                <div class="mb-4">
-                    <label for="body" class="sr-only">Body</label>
-                    <textarea name="body" id="body" cols="30" rows="4" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('body') border-red-500 @enderror" placeholder="Post something!"></textarea>
+    <div class="flex justify-center">
+        <div class="w-8/12 bg-white p-6 rounded-lg">
+            {{$user->name}}
+            <p>Posted {{$posts->count()}} {{Str::plural("post",$posts->count())}} and received {{$user->receivedLikes->count()}} likes</p>
 
-                    @error('body')
-                        <div class="text-red-500 mt-2 text-sm">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-
-                <div>
-                    <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Post</button>
-                </div>
-            </form>
-        @endauth
-        
-        @guest
-       
-            <h4>Please login to create posts
-          <a href={{route('login')}} class="bg-blue-500 text-white px-4 py-2 rounded font-medium">Login</a></h4>
-        @endguest
-
-        @if($posts->count())
+                    @if($posts->count())
             @foreach($posts as $post)
                 <h5><a href={{route("user.posts",$post->user)}}>{{$post->user->name}}</a> - {{$post->created_at->diffForHumans()}}</h5>
                 <p>{{$post->body}}</p>
@@ -70,9 +47,6 @@
         @else
             <h4>There are no posts</h4>
         @endif
-
-
-
+        </div>
     </div>
-</div>
 @endsection

@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 class PostsController extends Controller
 {
     //
-    public function index()
+    public function index(Post $post)
     {
-        $posts = Post::get();
-        return view("posts.index",[
+
+        $posts = Post::orderBy("created_at", "desc")->with(["user", "likes"])->paginate(2);
+        return view("posts.index", [
             "posts" => $posts
         ]);
     }
@@ -33,6 +34,16 @@ class PostsController extends Controller
 
 
         return back();
+    }
 
+    public function destroy(Post $post)
+    {
+        // if ($post->ownedBy(auth()->user())) {
+        //     dd("You are not allowed to delete");
+        // }
+        $this->authorize("delete", $post);
+        $post->delete();
+
+        return back();
     }
 }
