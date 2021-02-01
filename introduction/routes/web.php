@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,9 @@ Route::post("/say", function (Request $request) {
         "name" => $name
     ];
 });
+
+
+Route::get("/sayhi", "MainController@sayHi");
+Route::get("/sayname/{name}", [MainController::class, "sayHi"]);
+
+Route::get("/info", [MainController::class, "info"]);
