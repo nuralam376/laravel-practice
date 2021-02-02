@@ -53,3 +53,5 @@ Route::get("/sayhi", "MainController@sayHi");
 Route::get("/sayname/{name}", [MainController::class, "sayHi"]);
 
 Route::get("/info", [MainController::class, "info"]);
+
+Route::get("/allpeople", [MainController::class, "allPeople"]);
