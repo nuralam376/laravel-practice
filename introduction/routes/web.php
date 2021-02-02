@@ -55,3 +55,4 @@ Route::get("/sayname/{name}", [MainController::class, "sayHi"]);
 Route::get("/info", [MainController::class, "info"]);
 
 Route::get("/allpeople", [MainController::class, "allPeople"]);
+Route::get("/people", [MainController::class, 'testPeople']);
