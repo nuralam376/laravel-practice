@@ -45,4 +45,11 @@ class MainController extends Controller
         $people = $people->fresh()->displayNameAndEmail();
         return $people;
     }
+
+    public function posts()
+    {
+        $people = People::find(2);
+        $posts = $people->posts;
+        return $posts->find([1, 2]);
+    }
 }

@@ -9,6 +9,8 @@ class People extends Model
 {
     use HasFactory;
 
+    protected $fillable = ["name", "email"];
+
     public function displayNameAndEmail()
     {
         echo $this->name . " - " . $this->email;
@@ -17,5 +19,10 @@ class People extends Model
     public function addJR()
     {
         return $this->name .= " JR";
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

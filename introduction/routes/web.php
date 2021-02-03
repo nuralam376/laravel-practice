@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -56,3 +58,10 @@ Route::get("/info", [MainController::class, "info"]);
 
 Route::get("/allpeople", [MainController::class, "allPeople"]);
 Route::get("/people", [MainController::class, 'testPeople']);
+
+Route::get("/posts", [MainController::class, 'posts']);
+
+Route::get("/form", [FormController::class, 'displayForm'])->name("form.create");
+Route::post("/form", [FormController::class, 'showForm'])->name("form.save");
+
+Route::get("/createpost", [PostController::class, "createPost"]);

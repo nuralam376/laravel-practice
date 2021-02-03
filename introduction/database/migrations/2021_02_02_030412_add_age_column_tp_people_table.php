@@ -15,7 +15,7 @@ class AddAgeColumnTpPeopleTable extends Migration
     {
         Schema::table('people', function (Blueprint $table) {
             //
-            $table->string("age");
+            $table->string("age")->nullable();
         });
     }
 
