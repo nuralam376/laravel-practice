@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,13 +30,11 @@ Route::get("/articles/{article}", [ArticleController::class, "getArticle"]);
 
 Route::middleware("auth:api")->group(function () {
     Route::post("/articles", [ArticleController::class, "createArticle"]);
-    Route::put("/articles/{id}", [ArticleController::class, "updateArticle"]);
-    Route::delete("/articles/{id}", [ArticleController::class, "deleteArticle"]);
+    Route::put("/articles/{article}", [ArticleController::class, "updateArticle"]);
+    Route::delete("/articles/{article}", [ArticleController::class, "deleteArticle"]);
 });
 
-Route::get("/test", function () {
-    return "test";
-})->middleware("auth:api");
+Route::post("/token", [UserController::class, "generateToken"]);
 
 Route::get("/user", function (Request $request) {
     return $request->user();
