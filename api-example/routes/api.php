@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\DocumentationController;
+use App\Http\Controllers\QueryController;
 use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\User;
@@ -66,3 +67,5 @@ Route::get("/createToken", function () {
 });
 
 Route::get("/docs", [DocumentationController::class, "index"]);
+
+Route::get("/query", [QueryController::class, 'index']);
