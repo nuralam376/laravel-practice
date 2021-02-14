@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\DocumentationController;
 use App\Http\Controllers\UserController;
 use App\Models\Article;
 use App\Models\User;
@@ -63,3 +64,5 @@ Route::get("/createToken", function () {
     $user->api_token  = Str::random(80);
     $user->save();
 });
+
+Route::get("/docs", [DocumentationController::class, "index"]);
