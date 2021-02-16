@@ -108,14 +108,41 @@ class QueryController extends Controller
         //         $join->on("users.id", "=", "latest_post.user_id");
         //     })->get();
 
-        $first = DB::table("users")
-            ->whereNull("first_name")
-            ->get();
+        // $first = DB::table("users")
+        //     ->whereNull("first_name")
+        //     ->get();
 
-        $users = DB::table("users")
-            ->whereNull("last_name")
-            ->union($first)
-            ->get();
+        // $users = DB::table("users")
+        //     ->whereNull("last_name")
+        //     ->union($first)
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->where("votes", "=", 100)
+        //     ->where("age", ">", "45")
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->where("votes", 100)
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->where("votes", ">=", 100)
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->where("votes", "<>", 100)
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->where("votes", "LIKE", "T%")
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->where([
+        //         ["status", "=", 1],
+        //         ["subscribed", "<>", 1]
+        //     ])->get();
 
         return response()->json([
             "data" => $users
