@@ -144,8 +144,40 @@ class QueryController extends Controller
         //         ["subscribed", "<>", 1]
         //     ])->get();
 
-        return response()->json([
-            "data" => $users
-        ]);
+        // $users = DB::table("users")
+        //     ->where("votes", ">", 100)
+        //     ->orWhere("name", "John")
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->where("votes", ">", 100)
+        //     ->orWhere(function ($query) {
+        //         $query->where("name", "Abigali")
+        //             ->where("votes", ">", 40);
+        //     });
+
+        // $users = DB::table("users")
+        //     ->where("preference->dining->meal", "em")
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->whereJsonContains("option->languages", "en")
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->whereJsonContains("options->languages", ["en", "bng"])
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->whereJsonLength("options->languages", 0)
+        //     ->get();
+
+        $users = DB::table("users")
+            ->whereJsonLength("options.languages", ">", 0)
+            ->get();
+
+        // return response()->json([
+        //     "data" => $users
+        // ]);
     }
 }
