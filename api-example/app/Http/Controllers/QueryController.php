@@ -172,8 +172,24 @@ class QueryController extends Controller
         //     ->whereJsonLength("options->languages", 0)
         //     ->get();
 
+        // $users = DB::table("users")
+        //     ->whereJsonLength("options.languages", ">", 0)
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->whereBetween("votes", [1, 100])
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->whereNotBetween("votes", [1, 100])
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->whereIn("votes", [1, 2, 3])
+        //     ->get();
+
         $users = DB::table("users")
-            ->whereJsonLength("options.languages", ">", 0)
+            ->whereNotIn("votes", [1, 2, 3])
             ->get();
 
         // return response()->json([
