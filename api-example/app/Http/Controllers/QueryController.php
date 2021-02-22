@@ -188,8 +188,16 @@ class QueryController extends Controller
         //     ->whereIn("votes", [1, 2, 3])
         //     ->get();
 
+        // $users = DB::table("users")
+        //     ->whereNotIn("votes", [1, 2, 3])
+        //     ->get();
+
+        // $users = DB::table("users")
+        //     ->whereNull("updated_at")
+        //     ->get();
+
         $users = DB::table("users")
-            ->whereNotIn("votes", [1, 2, 3])
+            ->whereNotNull("updated_at")
             ->get();
 
         // return response()->json([
